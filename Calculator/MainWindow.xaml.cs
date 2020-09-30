@@ -57,6 +57,7 @@ namespace Calculator
         /// <param name="e">The event arguements</param>
         void onNumberPress(object sender, RoutedEventArgs e)
         {
+            
             if(sender is Button button)
             {
                 // Check to see if the display currenlty shows a zero
@@ -83,7 +84,7 @@ namespace Calculator
         /// <param name="e">The event parameters</param>
         void onOperatorPress(object sender, RoutedEventArgs e)
         {
-            if (sender is Button button)
+            if (sender is OperationButton button)
             {
                 // Determine if we are already performing an operation
                 if (operation == Operation.None)
@@ -101,7 +102,7 @@ namespace Calculator
                     applyOperation();
                 }
                 // Cache the new operation
-                operation = (Operation)int.Parse(button.Tag.ToString());
+                operation = button.Operation;
                 // And set the next key to overwrite the current display
                 nextKeyOverwrites = true;
             }
